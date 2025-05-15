@@ -8,7 +8,7 @@ public class Cell extends Rectangle {
     private int cellSize;
     private Color color;
 
-    public Cell(int cellSize, Color color) {
+    public Cell (int cellSize, Color color) {
         this.isOcupied = false;
         this.cellSize = cellSize;
         this.setWidth(cellSize);

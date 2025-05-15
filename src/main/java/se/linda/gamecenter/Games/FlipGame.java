@@ -10,10 +10,10 @@ import se.linda.gamecenter.FXbase.GridBase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlipGame {
-    private Pane mainGrid;
-    private Scene scene;
-    private GridBase gridBase;
+public class FlipGame implements BaseGame {
+    private final Pane mainGrid;
+    private final Scene scene;
+    private final GridBase gridBase;
 
     public FlipGame(int size) {
         gridBase = new GridBase(size, 40);

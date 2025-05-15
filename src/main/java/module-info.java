@@ -9,6 +9,7 @@ module se.linda.gamecenter {
     requires static lombok;
     requires jdk.incubator.vector;
     requires java.desktop;
+    requires com.fasterxml.jackson.databind;
 
     opens se.linda.gamecenter to javafx.fxml;
     exports se.linda.gamecenter;

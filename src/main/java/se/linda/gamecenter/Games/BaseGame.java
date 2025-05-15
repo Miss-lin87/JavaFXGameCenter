@@ -1,10 +1,12 @@
 package se.linda.gamecenter.Games;
 
-public class BaseGame {
+import javafx.scene.Scene;
 
-    public void startGame() {
-        // This method should be overridden in subclasses
-        throw new UnsupportedOperationException("startGame() not implemented");
+public interface BaseGame {
+    Scene Start();
+
+    private void gameLogic() {
+
     }
 
 }

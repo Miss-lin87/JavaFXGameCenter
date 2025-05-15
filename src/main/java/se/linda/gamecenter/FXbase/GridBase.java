@@ -5,7 +5,6 @@ import javafx.scene.paint.Color;
 import lombok.Getter;
 import se.linda.gamecenter.Componenets.Cell;
 
-
 public class GridBase {
     private final Pane mainGrid;
     @Getter

@@ -10,28 +10,26 @@ import se.linda.gamecenter.Enums.Directions;
 import se.linda.gamecenter.FXbase.GridBase;
 
 import static se.linda.gamecenter.Enums.Directions.*;
-import static se.linda.gamecenter.Enums.Directions.LEFT;
-import static se.linda.gamecenter.Enums.Directions.RIGHT;
 
-public class RobotGame {
-    private Pane mainGrid;
-    private Scene scene;
-    private Robot robotControll;
-    private GridBase gridBase;
+public class RobotGame implements BaseGame {
+    private final Pane mainGrid;
+    private final Scene scene;
+    private final GridBase gridBase;
+    private Robot robotControl;
 
     public RobotGame(int size) {
         gridBase = new GridBase(size, 40);
         mainGrid = gridBase.init(Color.GREEN);
         scene = new Scene(mainGrid);
         spawnRobot(0,0);
-        setKeyLogic(scene);
+        gameLogic();
     }
 
     private boolean checkMove(KeyEvent key, Directions direction) {
-        return key.getCode().equals(direction.getKey()) && robotControll.checkBounds(direction, gridBase);
+        return key.getCode().equals(direction.getKey()) && robotControl.checkBounds(direction, gridBase);
     }
 
-    private void setKeyLogic (Scene scene) {
+    private void gameLogic () {
         scene.setOnKeyPressed(press -> {
             if (checkMove(press, UP)) {
                 moveLogic(UP);
@@ -49,15 +47,15 @@ public class RobotGame {
     }
 
     private void moveLogic(Directions direction) {
-        Cell cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + robotControll.getX() + robotControll.getY())));
+        Cell cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + robotControl.getX() + robotControl.getY())));
         cell.flipOccupied();
-        robotControll.move(direction);
-        cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + robotControll.getX() + robotControll.getY())));
+        robotControl.move(direction);
+        cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + robotControl.getX() + robotControl.getY())));
         cell.flipOccupied();
     }
 
     private void spawnRobot(int x, int y) {
-        robotControll = new Robot(x,y);
+        robotControl = new Robot(x,y);
         Cell cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + x + y)));
         cell.flipOccupied();
     }
