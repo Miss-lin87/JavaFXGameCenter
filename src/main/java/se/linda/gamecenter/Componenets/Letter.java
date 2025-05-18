@@ -1,6 +1,5 @@
 package se.linda.gamecenter.Componenets;
 
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class Letter extends Text {
@@ -12,7 +11,7 @@ public class Letter extends Text {
         this.hidden = false;
     }
 
-    public void hideLetter() {
+    public void flipHidden() {
         this.hidden = !this.hidden;
         if (hidden) {
             this.setText("_");
@@ -21,12 +20,12 @@ public class Letter extends Text {
         }
     }
 
-    public Letter getLetter(int x, int y) {
-        setTranslateX(x * 25);
-        setTranslateY(y * 25);
-        this.setStroke(Color.BLACK);
-        this.setId(x + "" + y);
-        //hideLetter();
+    public Letter getLetter(int x, String letter) {
+        this.setText(Letter);
+        this.setDisable(true);
+        this.setId(x + letter);
+        this.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+        flipHidden();
         return this;
     }
 }

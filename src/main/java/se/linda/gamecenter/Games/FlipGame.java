@@ -5,10 +5,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import se.linda.gamecenter.Componenets.Cell;
+import se.linda.gamecenter.Enums.GridMovment;
 import se.linda.gamecenter.FXbase.GridBase;
 
 import java.util.ArrayList;
 import java.util.List;
+import static se.linda.gamecenter.Enums.GridMovment.*;
 
 public class FlipGame implements BaseGame {
     private final Pane mainGrid;
@@ -41,13 +43,20 @@ public class FlipGame implements BaseGame {
         cell.setOnMouseEntered(mouse -> scene.setCursor(Cursor.HAND));
     }
 
+    private Cell findCell(int x, int y) {
+        return (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + x + y)));
+    }
+
     private List<Cell> makeCellList(int x, int y) {
-        return new ArrayList<>(List.of(
-                (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + (x - 1) + y))),
-                (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + (x + 1) + y))),
-                (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + x + (y - 1)))),
-                (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + x + (y + 1))))
-        ));
+        List<Cell> cellList = new ArrayList<>();
+        for (GridMovment E : values()) {
+            try {
+                cellList.add(findCell(x+E.getCoordinates()[0], y+E.getCoordinates()[1]));
+            } catch (IndexOutOfBoundsException e) {
+                // Ignore out of bound
+            }
+        }
+        return cellList;
     }
 
     private void flipAdjacentCells(List<Cell> cellList) {
