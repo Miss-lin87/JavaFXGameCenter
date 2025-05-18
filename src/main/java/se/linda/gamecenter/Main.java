@@ -9,8 +9,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //mainApp = new SceneLuncher(new WordGuesser("Hello"));
-        //stage.setScene(mainApp.load());
-        //stage.show();
+        mainApp = new SceneLuncher(new WordGuesser());
+        stage.setScene(mainApp.load());
+        stage.show();
     }
 }

@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import se.linda.gamecenter.Componenets.Letter;
+import se.linda.gamecenter.Constructors.WordSelector;
 import se.linda.gamecenter.FXbase.LetterBase;
 
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ public class WordGuesser implements BaseGame {
     private final Scene scene;
     private final LetterBase letterBase;
 
-    public WordGuesser(String word) {
-        letterBase = new LetterBase(word);
+    public WordGuesser() {
+        letterBase = new LetterBase(new WordSelector().getWord());
         mainGrid = letterBase.init();
         scene = new Scene(mainGrid);
         setLogic();
@@ -27,12 +28,10 @@ public class WordGuesser implements BaseGame {
 
     private List<Integer> countLetters(String userLetter) {
         List<Integer> indexes = new ArrayList<>();
-        for (String letter : letterBase.getWord().split("")) {
-            if (letter.equals(userLetter)) {
-            }
-            indexes.add(letterBase.getWord().indexOf(letter));
+        String word = letterBase.getWord();
+        for (int index = word.indexOf(userLetter); index >= 0; index = word.indexOf(userLetter, index +1)) {
+            indexes.add(index);
         }
-        System.out.println(indexes);
         return indexes;
     }
 
@@ -55,6 +54,11 @@ public class WordGuesser implements BaseGame {
                 String input = letterBase.getTextField().getText();
                 checkGuess(input);
                 letterBase.getTextField().clear();
+            }
+        });
+        letterBase.getTextField().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 1) {
+                letterBase.getTextField().setText(newValue.substring(0, 1));
             }
         });
     }
