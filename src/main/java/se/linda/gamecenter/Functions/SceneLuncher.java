@@ -1,6 +1,7 @@
-package se.linda.gamecenter.Games;
+package se.linda.gamecenter.Functions;
 
 import javafx.scene.Scene;
+import se.linda.gamecenter.Games.BaseGame;
 
 public class SceneLuncher{
     private BaseGame game;
