@@ -5,8 +5,8 @@ import javafx.scene.shape.Rectangle;
 
 public class Cell extends Rectangle {
     private boolean isOcupied;
-    private int cellSize;
-    private Color color;
+    private final int cellSize;
+    private final Color color;
 
     public Cell (int cellSize, Color color) {
         this.isOcupied = false;
@@ -21,7 +21,7 @@ public class Cell extends Rectangle {
         setTranslateX(x * cellSize);
         setTranslateY(y * cellSize);
         this.setStroke(Color.WHITE);
-        this.setId(x + "" + y);
+        this.setId(x + "|" + y);
         return this;
     }
 

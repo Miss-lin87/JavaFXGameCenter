@@ -41,7 +41,7 @@ public class WordGuesser implements BaseGame {
             if (word.contains(letterGuess)) {
                 List<Integer> indexes = countLetters(letterGuess);
                 for (Integer index : indexes) {
-                    Letter temp = (Letter) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + index + letterGuess)));
+                    Letter temp = (Letter) mainGrid.lookup("#" + index + letterGuess);
                     temp.flipHidden();
                 }
             }

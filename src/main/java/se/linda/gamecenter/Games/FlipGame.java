@@ -27,7 +27,7 @@ public class FlipGame implements BaseGame {
     private void gameLogic() {
         for (int x = 0; x < gridBase.getNumberOfCells(); x++) {
             for (int y = 0; y < gridBase.getNumberOfCells(); y++) {
-                Cell cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + x + y)));
+                Cell cell = (Cell) mainGrid.lookup("#" + x + y);
                 setCellFunction(cell);
             }
         }
@@ -44,7 +44,7 @@ public class FlipGame implements BaseGame {
     }
 
     private Cell findCell(int x, int y) {
-        return (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + x + y)));
+        return (Cell) mainGrid.lookup("#" + x + y);
     }
 
     private List<Cell> makeCellList(int x, int y) {

@@ -4,10 +4,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Card extends Rectangle {
-    private int hight;
-    private int width;
-    private Color back;
-    private Color front;
+    private final int hight;
+    private final int width;
+    private final Color back;
+    private final Color front;
 
     public Card(int height, int width, Color back, Color front) {
         this.hight = height;

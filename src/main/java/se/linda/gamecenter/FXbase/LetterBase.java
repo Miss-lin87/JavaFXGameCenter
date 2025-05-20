@@ -1,11 +1,8 @@
 package se.linda.gamecenter.FXbase;
 
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import lombok.Getter;
 import se.linda.gamecenter.Componenets.Letter;
 

@@ -8,9 +8,7 @@ import se.linda.gamecenter.Componenets.Card;
 import se.linda.gamecenter.FXbase.CardBase;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Timer;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -30,16 +28,9 @@ public class Memory implements BaseGame {
 
     private void gameLogic() {
         for (Node N : mainGrid.getChildrenUnmodifiable()) {
-            Card card = (Card) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#"+N.getId())));
+            Card card = (Card) mainGrid.lookup("#"+N.getId());
             setCardFunction(card);
         }
-            //for (int x = 0; x < cardBase.getNumberOfCards(); x++) {
-            //    for (int y = 0; y < cardBase.getNumberOfCards(); y++) {
-            //        Card card = (Card) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + x + y)));
-            //        setCardFunction(card);
-            //    }
-            //}
-
     }
 
     private void setCardFunction(Card card) {

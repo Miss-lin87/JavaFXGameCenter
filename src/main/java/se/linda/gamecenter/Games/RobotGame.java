@@ -33,30 +33,30 @@ public class RobotGame implements BaseGame {
         scene.setOnKeyPressed(press -> {
             if (checkMove(press, UP)) {
                 moveLogic(UP);
-            }
-            if (checkMove(press, DOWN)) {
+            } else if (checkMove(press, DOWN)) {
                 moveLogic(DOWN);
-            }
-            if (checkMove(press, LEFT)) {
+            } else if (checkMove(press, LEFT)) {
                 moveLogic(LEFT);
-            }
-            if (checkMove(press, RIGHT)) {
+            } else if (checkMove(press, RIGHT)) {
                 moveLogic(RIGHT);
+            } else {
+                //TODO add error message out of bounds
+                System.out.println("out of bounds, Really?");
             }
         });
     }
 
     private void moveLogic(Directions direction) {
-        Cell cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + robotControl.getX() + robotControl.getY())));
+        Cell cell = (Cell) mainGrid.lookup("#" + robotControl.getX() + "|" + robotControl.getY());
         cell.flipOccupied();
         robotControl.move(direction);
-        cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + robotControl.getX() + robotControl.getY())));
-        cell.flipOccupied();
+        Cell cellNew = (Cell) mainGrid.lookup("#" + robotControl.getX() +"|"+ robotControl.getY());
+        cellNew.flipOccupied();
     }
 
     private void spawnRobot(int x, int y) {
         robotControl = new Robot(x,y);
-        Cell cell = (Cell) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(mainGrid.lookup("#" + x + y)));
+        Cell cell = (Cell) mainGrid.lookup("#" + x +"|"+ y);
         cell.flipOccupied();
     }
 
