@@ -17,4 +17,6 @@ module se.linda.gamecenter {
     opens se.linda.gamecenter.Games to javafx.fxml;
     exports se.linda.gamecenter.Controllers;
     opens se.linda.gamecenter.Controllers to javafx.fxml;
+    exports se.linda.gamecenter.Functions;
+    opens se.linda.gamecenter.Functions to javafx.fxml;
 }
