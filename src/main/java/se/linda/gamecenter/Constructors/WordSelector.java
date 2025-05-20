@@ -1,6 +1,7 @@
 package se.linda.gamecenter.Constructors;
 
 import java.util.List;
+import java.util.Random;
 
 public class WordSelector {
     private final List<String> words;
@@ -21,7 +22,7 @@ public class WordSelector {
     }
 
     public String getWord() {
-        int randomIndex = (int) (Math.random() * words.size());
+        int randomIndex = new Random().nextInt(words.size());
         return words.get(randomIndex);
     }
 }

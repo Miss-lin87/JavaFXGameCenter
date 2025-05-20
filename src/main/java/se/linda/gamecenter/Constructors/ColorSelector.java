@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ColorSelector {
     private final List<Color> colorList;
@@ -25,7 +26,7 @@ public class ColorSelector {
     }
 
     public Color getColor() {
-        int randomIndex = (int) (Math.random() * colorList.size());
+        int randomIndex = new Random().nextInt(colorList.size());
         return colorList.get(randomIndex);
     }
 }

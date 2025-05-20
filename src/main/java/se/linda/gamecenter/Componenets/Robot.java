@@ -31,6 +31,7 @@ public class Robot {
             case DOWN -> y++;
             case LEFT -> x--;
             case RIGHT -> x++;
+            default -> System.out.println("Error");
         }
     }
 
