@@ -1,32 +1,26 @@
 package se.linda.gamecenter.Componenets;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import lombok.Getter;
 
 public class Picture extends Rectangle {
-    private String Letter;
-    private boolean hidden;
+    private Image image;
+    @Getter
+    private String name;
+    private int id;
 
-    public Picture(Image fill) {
-        this.Letter = letter;
-        this.hidden = false;
+    public Picture (String path, String name) {
+        this.image = new Image(path);
+        this.name = name;
     }
 
-    public void flipHidden() {
-        this.hidden = !this.hidden;
-        if (hidden) {
-            this.setText("_");
-        } else {
-            this.setText(Letter);
-        }
-    }
-
-    public Letter getLetter(int x, String letter) {
-        this.setText(Letter);
-        this.setDisable(true);
-        this.setId(x + letter);
-        this.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
-        flipHidden();
+    public Picture getPic(int height, int with) {
+        this.setHeight(height);
+        this.setWidth(with);
+        this.setFill(new ImagePattern(image));
+        this.setId(name);
         return this;
     }
 }
