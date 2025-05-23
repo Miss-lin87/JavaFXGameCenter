@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import se.linda.gamecenter.Componenets.Card;
 import se.linda.gamecenter.FXbase.CardBase;
+import se.linda.gamecenter.Functions.Delay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +54,7 @@ public class Memory implements BaseGame {
             disableCards(cardList);
             cardList.clear();
         } else {
-            ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-            executor.schedule(this::flipBackCards, 1, TimeUnit.SECONDS);
+            new Delay(this::flipBackCards,1);
         }
     }
 
