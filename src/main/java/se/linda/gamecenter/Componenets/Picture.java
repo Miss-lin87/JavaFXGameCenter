@@ -11,9 +11,18 @@ public class Picture extends Rectangle {
     private String name;
     private int id;
 
+    public Picture() {
+        this.image = null;
+        this.name = "computer";
+    }
+
     public Picture (String path, String name) {
         this.image = new Image(path);
         this.name = name;
+    }
+
+    public void setPath(String path) {
+        this.image = new Image(path);
     }
 
     public Picture getPic(int height, int with) {
