@@ -9,7 +9,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        SceneLuncher mainApp = new SceneLuncher(new RockPapperGame(""));
+        SceneLuncher mainApp = new SceneLuncher(new WordGuesser());
         stage.setScene(mainApp.load());
         stage.show();
     }

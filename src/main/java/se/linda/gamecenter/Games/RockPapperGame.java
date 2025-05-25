@@ -22,7 +22,7 @@ public class RockPapperGame implements BaseGame {
     private final Map<RPS, Set<RPS>> Conditions;
 
 
-    public RockPapperGame(String size) throws IOException {
+    public RockPapperGame() throws IOException {
         makePicList();
         this.picBase = new PicBase(picList, 75, 75);
         this.mainGrid = picBase.init();
@@ -75,7 +75,6 @@ public class RockPapperGame implements BaseGame {
     private void gameLogic() {
         for (RPS rps : RPS.values()) {
             Picture tempPic = (Picture) mainGrid.lookup("#" + rps.getName());
-            System.out.println(tempPic.getName());
             setFunction(tempPic, rps);
         }
     }
