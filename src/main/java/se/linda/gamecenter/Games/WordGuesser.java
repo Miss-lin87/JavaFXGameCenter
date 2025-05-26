@@ -14,53 +14,85 @@ public class WordGuesser implements BaseGame {
     private final Pane mainGrid;
     private final Scene scene;
     private final LetterBase letterBase;
+    private final List<String> guessedLetters = new ArrayList<>();
+    private final List<Integer> letterIndexes = new ArrayList<>();
+    private final String hiddenWord;
 
     public WordGuesser() {
         letterBase = new LetterBase(new WordSelector().getWord());
         mainGrid = letterBase.init();
         scene = new Scene(mainGrid);
+        hiddenWord = letterBase.getWord();
         setLogic();
     }
+
 
     private String[] parseGuess(String userInput) {
         return userInput.strip().split("");
     }
 
-    private List<Integer> countLetters(String userLetter) {
-        List<Integer> indexes = new ArrayList<>();
-        String word = letterBase.getWord();
-        for (int index = word.indexOf(userLetter); index >= 0; index = word.indexOf(userLetter, index +1)) {
-            indexes.add(index);
+    private void countLetters(String userLetter) {
+        letterIndexes.clear();
+        for (int index = hiddenWord.indexOf(userLetter); index >= 0; index = hiddenWord.indexOf(userLetter, index +1)) {
+            letterIndexes.add(index);
         }
-        return indexes;
     }
 
-    private void checkGuess(String userGuess) {
-        String word = letterBase.getWord();
-        for (String letterGuess : parseGuess(userGuess)) {
-            if (word.contains(letterGuess)) {
-                List<Integer> indexes = countLetters(letterGuess);
-                for (Integer index : indexes) {
-                    Letter temp = (Letter) mainGrid.lookup("#" + index + letterGuess);
+    private void addLetter(String userGuess) {
+        if (!guessedLetters.contains(userGuess)) {
+            guessedLetters.add(userGuess);
+        }
+    }
+
+    private void flipCorrectGuess(String letterGuess) {
+        if (hiddenWord.contains(letterGuess)) {
+            countLetters(letterGuess);
+            for (Integer index : letterIndexes) {
+                Letter temp = (Letter) mainGrid.lookup("#" + index + letterGuess);
+                if (temp.getHidden()) {
                     temp.flipHidden();
                 }
             }
+        } else {
+            letterBase.getGuessField().setText(letterBase.getGuessField().getText() + letterGuess + " ");
+        }
+    }
+
+    private void checkGuess(String userGuess) {
+        addLetter(userGuess);
+        for (String letterGuess : parseGuess(userGuess)) {
+            flipCorrectGuess(letterGuess);
         }
     }
 
     private void setLogic() {
         letterBase.getTextField().setOnKeyPressed( key -> {
-            if (key.getCode() == KeyCode.ENTER) {
+            if (key.getCode() == KeyCode.ENTER && !letterBase.getTextField().getText().isEmpty()) {
                 String input = letterBase.getTextField().getText();
                 checkGuess(input);
                 letterBase.getTextField().clear();
+                checkVictory();
             }
         });
         letterBase.getTextField().textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() > 1) {
+            if ((newValue.length() == 1 && !newValue.matches("[a-zA-Z]*")) || guessedLetters.contains(newValue)) {
+                letterBase.getTextField().clear();
+            } else if (newValue.length() > 1) {
                 letterBase.getTextField().setText(newValue.substring(0, 1));
             }
         });
+    }
+
+    private void checkVictory() {
+        String[] word = hiddenWord.strip().split("");
+        StringBuilder hiddenWord = new StringBuilder();
+        for (int i = 0; i < word.length; i++) {
+            Letter letter = (Letter) mainGrid.lookup("#" + i + word[i]);
+            hiddenWord.append(letter.getText());
+        }
+        if (!hiddenWord.toString().contains("_")) {
+            System.out.println("You guessed the word: " + hiddenWord);
+        }
     }
 
     public Scene Start() {

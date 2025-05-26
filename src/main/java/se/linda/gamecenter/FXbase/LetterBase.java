@@ -1,5 +1,6 @@
 package se.linda.gamecenter.FXbase;
 
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -11,11 +12,14 @@ public class LetterBase {
     @Getter
     private final TextField textField;
     @Getter
+    private final TextArea guessField;
+    @Getter
     private final String word;
 
     public LetterBase(String word) {
         this.mainGrid = new GridPane();
         this.textField = new TextField();
+        this.guessField = new TextArea();
         this.word = word;
     }
 
@@ -34,6 +38,10 @@ public class LetterBase {
             position ++;
         }
         mainGrid.add(textField, 0,1,tempWord.length,1);
+        guessField.setEditable(false);
+        guessField.setWrapText(true);
+        guessField.setPrefSize(50,50);
+        mainGrid.add(guessField, 0,2, tempWord.length,1);
     }
 
     public Pane init() {
