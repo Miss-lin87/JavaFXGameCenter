@@ -27,7 +27,7 @@ public class FlipGame implements BaseGame {
     private void gameLogic() {
         for (int x = 0; x < gridBase.getNumberOfCells(); x++) {
             for (int y = 0; y < gridBase.getNumberOfCells(); y++) {
-                Cell cell = (Cell) mainGrid.lookup("#" + x + y);
+                Cell cell = (Cell) mainGrid.lookup("#" + x + "|" + y);
                 setCellFunction(cell);
             }
         }
@@ -35,7 +35,7 @@ public class FlipGame implements BaseGame {
 
     private void setCellFunction(Cell cell) {
         int tempX = Integer.parseInt(cell.getId().substring(0, 1));
-        int tempY = Integer.parseInt(cell.getId().substring(1, 2));
+        int tempY = Integer.parseInt(cell.getId().substring(2, 3));
         cell.setOnMouseClicked(_ -> {
             cell.flipOccupied();
             flipAdjacentCells(makeCellList(tempX, tempY));
@@ -44,7 +44,7 @@ public class FlipGame implements BaseGame {
     }
 
     private Cell findCell(int x, int y) {
-        return (Cell) mainGrid.lookup("#" + x + y);
+        return (Cell) mainGrid.lookup("#" + x + "|" + y);
     }
 
     private List<Cell> makeCellList(int x, int y) {

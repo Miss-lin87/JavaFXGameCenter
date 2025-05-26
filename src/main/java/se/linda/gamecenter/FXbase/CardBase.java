@@ -33,7 +33,7 @@ public class CardBase {
     }
 
     private double getPrefSize(int cellSize) {
-        return (double) cellSize * numberOfCards;
+        return (double) cellSize * numberOfCards/2;
     }
 
     private void fixNumberOfCards() {
