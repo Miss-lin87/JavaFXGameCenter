@@ -1,6 +1,7 @@
 package se.linda.gamecenter.Games;
 
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -39,6 +40,7 @@ public class FlipGame implements BaseGame {
         cell.setOnMouseClicked(_ -> {
             cell.flipOccupied();
             flipAdjacentCells(makeCellList(tempX, tempY));
+            checkWin();
         });
         cell.setOnMouseEntered(mouse -> scene.setCursor(Cursor.HAND));
     }
@@ -64,6 +66,20 @@ public class FlipGame implements BaseGame {
             if (cell != null) {
                 cell.flipOccupied();
             }
+        }
+    }
+
+    private void checkWin() {
+        boolean win = true;
+        for (Node N : mainGrid.getChildrenUnmodifiable()) {
+            Cell cell = (Cell) mainGrid.lookup("#" + N.getId());
+            if (!cell.getFill().equals(Color.RED)) {
+                win = false;
+                break;
+            }
+        }
+        if (win) {
+            System.out.println("You win!");
         }
     }
 
