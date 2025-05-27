@@ -53,6 +53,7 @@ public class Memory implements BaseGame {
         if (cardList.get(0).getFill().equals(cardList.get(1).getFill())) {
             disableCards(cardList);
             cardList.clear();
+            checkWin();
         } else {
             new Delay(this::flipBackCards,1);
         }
@@ -67,6 +68,20 @@ public class Memory implements BaseGame {
     private void disableCards(List<Card> cardList) {
         for (Card card : cardList) {
             card.setDisable(true);
+        }
+    }
+
+    private void checkWin() {
+        boolean allDisabled = true;
+        for (Node N : mainGrid.getChildrenUnmodifiable()) {
+            Card card = (Card) mainGrid.lookup("#"+N.getId());
+            if (!card.isDisable()) {
+                allDisabled = false;
+                break;
+            }
+        }
+        if (allDisabled) {
+            System.out.println("You win!");
         }
     }
 

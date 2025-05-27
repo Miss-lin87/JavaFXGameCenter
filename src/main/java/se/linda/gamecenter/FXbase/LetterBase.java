@@ -27,20 +27,28 @@ public class LetterBase {
         return word.strip().split("");
     }
 
-    private void setGrid() {
-        mainGrid.setPrefSize(250, 250);
-        mainGrid.setHgap(10);
-        String[] tempWord = parseWord();
+    private void setGuessField() {
+        guessField.setEditable(false);
+        guessField.setWrapText(true);
+        guessField.setPrefSize(50,50);
+    }
+
+    private void setLetters(String[] tempWord) {
         int position = 0;
         for (String letter : tempWord) {
             Letter l = new Letter(letter);
             mainGrid.add(l.getLetter(position,letter),position,0);
             position ++;
         }
+    }
+
+    private void setGrid() {
+        mainGrid.setPrefSize(250, 250);
+        mainGrid.setHgap(10);
+        String[] tempWord = parseWord();
+        setLetters(tempWord);
+        setGuessField();
         mainGrid.add(textField, 0,1,tempWord.length,1);
-        guessField.setEditable(false);
-        guessField.setWrapText(true);
-        guessField.setPrefSize(50,50);
         mainGrid.add(guessField, 0,2, tempWord.length,1);
     }
 
