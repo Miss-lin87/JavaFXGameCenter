@@ -92,7 +92,7 @@ public class WordGuesser implements BaseGame {
         });
     }
 
-    private void checkVictory() {
+    public void checkVictory() {
         String[] word = hiddenWord.strip().split("");
         StringBuilder tempHiddenWord = new StringBuilder();
         for (int i = 0; i < word.length; i++) {
@@ -100,7 +100,7 @@ public class WordGuesser implements BaseGame {
             tempHiddenWord.append(letter.getText());
         }
         if (!tempHiddenWord.toString().contains("_")) {
-            alerts.showAlert((Stage) mainGrid.getScene().getWindow(), "2");
+            reRun(alerts,mainGrid,"2");
         }
     }
 
