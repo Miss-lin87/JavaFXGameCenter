@@ -3,11 +3,14 @@ package se.linda.gamecenter.Games;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import se.linda.gamecenter.Componenets.Cell;
+import se.linda.gamecenter.Enums.Games;
 import se.linda.gamecenter.Enums.GridMovment;
 import se.linda.gamecenter.FXbase.GridBase;
+import se.linda.gamecenter.Functions.Alerts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +20,13 @@ public class FlipGame implements BaseGame {
     private final Pane mainGrid;
     private final Scene scene;
     private final GridBase gridBase;
+    private Alerts alerts;
 
     public FlipGame(int size) {
         gridBase = new GridBase(size, 40);
         mainGrid = gridBase.init(Color.GREEN);
         scene = new Scene(mainGrid);
+        alerts = new Alerts("Congratulations!", "You fliped all the tiles", Alert.AlertType.NONE);
         gameLogic();
     }
 
@@ -79,7 +84,7 @@ public class FlipGame implements BaseGame {
             }
         }
         if (win) {
-            reRun();
+            reRun(alerts, mainGrid, Games.FLIPGAME.getGame());
         }
     }
 

@@ -2,11 +2,16 @@ package se.linda.gamecenter.Games;
 
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import se.linda.gamecenter.Componenets.Picture;
+import se.linda.gamecenter.Enums.Games;
 import se.linda.gamecenter.Enums.RPS;
 import se.linda.gamecenter.FXbase.PicBase;
+import se.linda.gamecenter.Functions.Alerts;
+
 import java.io.IOException;
 import java.util.*;
 import static se.linda.gamecenter.Enums.RPS.*;
@@ -18,14 +23,18 @@ public class RockPapperGame implements BaseGame {
     private final Random random;
     private final List<Picture> picList = new ArrayList<>();
     private final Picture computerChoice;
-    private final Text result = new Text("Test");
+    private final Text result = new Text();
     private final Map<RPS, Set<RPS>> Conditions;
-
+    private final Text stats = new Text("0 - 0");
+    private int wins = 0;
+    private int loses = 0;
+    private Alerts alets;
 
     public RockPapperGame() throws IOException {
         makePicList();
         this.picBase = new PicBase(picList, 75, 75);
         this.mainGrid = picBase.init();
+        addStats();
         this.random = new Random();
         this.scene = new Scene(mainGrid);
         this.computerChoice = new Picture();
@@ -33,6 +42,7 @@ public class RockPapperGame implements BaseGame {
                 ROCK, Set.of(SCISSOR),
                 SCISSOR, Set.of(PAPER),
                 PAPER, Set.of(ROCK)));
+        this.alets = new Alerts("", "", Alert.AlertType.NONE);
         gameLogic();
     }
 
@@ -42,6 +52,17 @@ public class RockPapperGame implements BaseGame {
     }
 
     private void removeComputerOptions() {
+        mainGrid.getChildren().remove(computerChoice);
+        mainGrid.getChildren().remove(result);
+    }
+
+    private void addStats() {
+        stats.setFont(Font.font(25));
+        mainGrid.add(stats, mainGrid.getChildren().size(),0);
+    }
+
+    private void uppdateStats() {
+        stats.setText(wins + " - " + loses);
     }
 
     private void makePicList() {
@@ -52,8 +73,11 @@ public class RockPapperGame implements BaseGame {
     }
 
     private void setFunction(Picture pic, RPS userRPS) {
-        pic.setOnMouseEntered(event -> scene.setCursor(Cursor.HAND));
+        pic.setOnMouseEntered(event -> {
+            scene.setCursor(Cursor.HAND);
+        });
         pic.setOnMouseClicked(select -> {
+            removeComputerOptions();
             scene.setCursor(Cursor.WAIT);
             RPS computerRPS = RPS.values()[random.nextInt(3)];
             computerChoice.setPath(computerRPS.getImagePath());
@@ -66,9 +90,23 @@ public class RockPapperGame implements BaseGame {
         if (userSelection.equals(computerSelection)) {
             result.setText("Its a tie");
         } else if (Conditions.get(userSelection).contains(computerSelection)) {
-            result.setText("You Win");
+            wins ++;
+            testWin("You Win");
         } else {
-            result.setText("You lose");
+            loses ++;
+            testWin("You lose");
+        }
+    }
+
+    private void testWin(String message) {
+        uppdateStats();
+        result.setText(message);
+        if (wins+loses == 3 && wins > loses) {
+            alets = new Alerts("Congratulations","You win with a score of: " + wins + " Wins, " + loses + " Loses", Alert.AlertType.NONE);
+            reRun(alets, mainGrid, Games.RPSGAME.getGame());
+        } else if (wins+loses == 3 && wins < loses) {
+            alets = new Alerts("Sorry", "You lose with a score of: " + wins + " Wins, " + loses + " Loses", Alert.AlertType.NONE);
+            reRun(alets, mainGrid, Games.RPSGAME.getGame());
         }
     }
 

@@ -1,7 +1,6 @@
 package se.linda.gamecenter.Enums;
 
 import lombok.Getter;
-
 import java.util.Objects;
 
 public enum RPS {

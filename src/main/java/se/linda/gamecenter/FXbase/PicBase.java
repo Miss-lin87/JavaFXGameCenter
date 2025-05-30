@@ -1,16 +1,8 @@
 package se.linda.gamecenter.FXbase;
 
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import lombok.Getter;
-import se.linda.gamecenter.Componenets.Card;
-import se.linda.gamecenter.Componenets.Letter;
 import se.linda.gamecenter.Componenets.Picture;
-import se.linda.gamecenter.Enums.RPS;
-
 import java.util.List;
-import java.util.Random;
 
 public class PicBase {
     private final GridPane mainGrid;
@@ -33,7 +25,7 @@ public class PicBase {
     }
 
     private void setGrid() {
-        mainGrid.setPrefSize(100,100);
+        mainGrid.setPrefSize(100,200);
         int x = 0;
         int y = 0;
         while (!picList.isEmpty()) {

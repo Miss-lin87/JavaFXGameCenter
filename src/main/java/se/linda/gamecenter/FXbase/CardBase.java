@@ -5,7 +5,6 @@ import javafx.scene.paint.Color;
 import lombok.Getter;
 import se.linda.gamecenter.Componenets.Card;
 import se.linda.gamecenter.Constructors.ColorSelector;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

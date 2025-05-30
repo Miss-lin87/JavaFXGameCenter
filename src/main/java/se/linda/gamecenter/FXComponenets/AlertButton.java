@@ -6,7 +6,6 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import se.linda.gamecenter.Controllers.GameSelector;
 import se.linda.gamecenter.Functions.SceneLuncher;
-import se.linda.gamecenter.Games.FlipGame;
 
 public class AlertButton {
     private ButtonType no;

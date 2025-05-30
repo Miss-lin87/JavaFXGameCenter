@@ -2,18 +2,14 @@ package se.linda.gamecenter.Games;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import se.linda.gamecenter.Componenets.Cell;
 import se.linda.gamecenter.Componenets.Robot;
 import se.linda.gamecenter.Enums.Directions;
-import se.linda.gamecenter.FXComponenets.AlertButton;
 import se.linda.gamecenter.FXbase.GridBase;
+import se.linda.gamecenter.Functions.Alerts;
 
 import static se.linda.gamecenter.Enums.Directions.*;
 
@@ -22,11 +18,13 @@ public class RobotGame implements BaseGame {
     private final Scene scene;
     private final GridBase gridBase;
     private Robot robotControl;
+    private Alerts alerts;
 
     public RobotGame(int size) {
         gridBase = new GridBase(size, 40);
         mainGrid = gridBase.init(Color.GREEN);
         scene = new Scene(mainGrid);
+        alerts = new Alerts("Congratulations", "You win", Alert.AlertType.NONE);
         spawnRobot(0,0);
         gameLogic();
     }
@@ -46,7 +44,6 @@ public class RobotGame implements BaseGame {
             } else if (checkMove(press, RIGHT)) {
                 moveLogic(RIGHT);
             } else {
-                //TODO add error message out of bounds
                 System.out.println("out of bounds, Really?");
             }
         });
