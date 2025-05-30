@@ -9,7 +9,6 @@ import javafx.scene.paint.Color;
 import se.linda.gamecenter.Componenets.Cell;
 import se.linda.gamecenter.Enums.Games;
 import se.linda.gamecenter.Enums.GridMovment;
-import se.linda.gamecenter.FXComponenets.AlertButton;
 import se.linda.gamecenter.FXbase.GridBase;
 import se.linda.gamecenter.Functions.Alerts;
 

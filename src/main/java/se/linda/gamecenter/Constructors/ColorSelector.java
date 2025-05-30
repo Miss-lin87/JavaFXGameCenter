@@ -2,7 +2,6 @@ package se.linda.gamecenter.Constructors;
 
 import javafx.scene.paint.Color;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

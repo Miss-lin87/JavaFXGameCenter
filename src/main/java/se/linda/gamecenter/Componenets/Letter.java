@@ -1,7 +1,6 @@
 package se.linda.gamecenter.Componenets;
 
 import javafx.scene.text.Text;
-import lombok.Getter;
 
 public class Letter extends Text {
     private String letter;

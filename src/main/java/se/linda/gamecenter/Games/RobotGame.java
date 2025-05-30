@@ -2,17 +2,12 @@ package se.linda.gamecenter.Games;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import se.linda.gamecenter.Componenets.Cell;
 import se.linda.gamecenter.Componenets.Robot;
 import se.linda.gamecenter.Enums.Directions;
-import se.linda.gamecenter.FXComponenets.AlertButton;
 import se.linda.gamecenter.FXbase.GridBase;
 import se.linda.gamecenter.Functions.Alerts;
 
