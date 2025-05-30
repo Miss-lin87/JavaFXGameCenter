@@ -4,9 +4,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import se.linda.gamecenter.Componenets.Letter;
 import se.linda.gamecenter.Constructors.WordSelector;
+import se.linda.gamecenter.Enums.Games;
 import se.linda.gamecenter.FXbase.LetterBase;
 import se.linda.gamecenter.Functions.Alerts;
 
@@ -100,7 +100,7 @@ public class WordGuesser implements BaseGame {
             tempHiddenWord.append(letter.getText());
         }
         if (!tempHiddenWord.toString().contains("_")) {
-            reRun(alerts,mainGrid,"2");
+            reRun(alerts, mainGrid, Games.WORDGUESSER.getGame());
         }
     }
 

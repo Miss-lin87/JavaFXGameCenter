@@ -1,18 +1,8 @@
 package se.linda.gamecenter.Functions;
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.*;
-import javafx.application.Application;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.shape.Line;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.linda.gamecenter.FXComponenets.AlertButton;
-
-import java.util.List;
 
 public class Alerts extends Alert{
     private String title;

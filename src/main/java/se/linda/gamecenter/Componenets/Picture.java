@@ -9,11 +9,13 @@ public class Picture extends Rectangle {
     private Image image;
     @Getter
     private String name;
-    private int id;
+    private String id;
 
     public Picture() {
         this.image = null;
         this.name = "computer";
+        this.id = "computer";
+        this.setId(id);
     }
 
     public Picture (String path, String name) {

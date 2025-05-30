@@ -33,7 +33,7 @@ public class PicBase {
     }
 
     private void setGrid() {
-        mainGrid.setPrefSize(100,100);
+        mainGrid.setPrefSize(100,200);
         int x = 0;
         int y = 0;
         while (!picList.isEmpty()) {
