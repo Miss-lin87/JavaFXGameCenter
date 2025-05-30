@@ -40,7 +40,7 @@ public class FlipGame implements BaseGame {
         cell.setOnMouseClicked(_ -> {
             cell.flipOccupied();
             flipAdjacentCells(makeCellList(tempX, tempY));
-            checkWin();
+            checkVictory();
         });
         cell.setOnMouseEntered(mouse -> scene.setCursor(Cursor.HAND));
     }
@@ -69,7 +69,7 @@ public class FlipGame implements BaseGame {
         }
     }
 
-    private void checkWin() {
+    public void checkVictory() {
         boolean win = true;
         for (Node N : mainGrid.getChildrenUnmodifiable()) {
             Cell cell = (Cell) mainGrid.lookup("#" + N.getId());
@@ -79,7 +79,7 @@ public class FlipGame implements BaseGame {
             }
         }
         if (win) {
-            System.out.println("You win!");
+            reRun();
         }
     }
 

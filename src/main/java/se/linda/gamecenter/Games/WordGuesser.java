@@ -1,11 +1,14 @@
 package se.linda.gamecenter.Games;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import se.linda.gamecenter.Componenets.Letter;
 import se.linda.gamecenter.Constructors.WordSelector;
 import se.linda.gamecenter.FXbase.LetterBase;
+import se.linda.gamecenter.Functions.Alerts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +20,19 @@ public class WordGuesser implements BaseGame {
     private final List<String> guessedLetters = new ArrayList<>();
     private final List<Integer> letterIndexes = new ArrayList<>();
     private final String hiddenWord;
+    private Alerts alerts;
 
     public WordGuesser() {
         letterBase = new LetterBase(new WordSelector().getWord());
         mainGrid = letterBase.init();
         scene = new Scene(mainGrid);
         hiddenWord = letterBase.getWord();
+        setAlert();
         setLogic();
+    }
+
+    private void setAlert() {
+        alerts = new Alerts("Congratulations!", "You guessed the word: " + hiddenWord, Alert.AlertType.NONE);
     }
 
 
@@ -83,15 +92,15 @@ public class WordGuesser implements BaseGame {
         });
     }
 
-    private void checkVictory() {
+    public void checkVictory() {
         String[] word = hiddenWord.strip().split("");
-        StringBuilder hiddenWord = new StringBuilder();
+        StringBuilder tempHiddenWord = new StringBuilder();
         for (int i = 0; i < word.length; i++) {
             Letter letter = (Letter) mainGrid.lookup("#" + i + word[i]);
-            hiddenWord.append(letter.getText());
+            tempHiddenWord.append(letter.getText());
         }
-        if (!hiddenWord.toString().contains("_")) {
-            System.out.println("You guessed the word: " + hiddenWord);
+        if (!tempHiddenWord.toString().contains("_")) {
+            reRun(alerts,mainGrid,"2");
         }
     }
 
