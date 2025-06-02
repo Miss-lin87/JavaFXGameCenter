@@ -10,7 +10,7 @@ public class ColorSelector {
     private final List<Color> colorList;
 
     public ColorSelector(Color backColor) {
-        colorList = new ArrayList<>(List.of(
+        this.colorList = new ArrayList<>(List.of(
                 Color.RED,
                 Color.GREEN,
                 Color.BLUE,
@@ -21,7 +21,7 @@ public class ColorSelector {
                 Color.BROWN,
                 Color.GRAY
         ));
-        colorList.remove(backColor);
+        this.colorList.remove(backColor);
     }
 
     public Color getColor() {

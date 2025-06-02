@@ -2,13 +2,11 @@ package se.linda.gamecenter.FXbase;
 
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import lombok.Getter;
 import se.linda.gamecenter.Componenets.Cell;
 
-public class GridBase {
+public class GridBase extends Pane {
     private final Pane mainGrid;
-    @Getter
-    private final int numberOfCells;
+    private int numberOfCells;
     private final int cellSize;
 
     public GridBase(int numberOfCells, int cellSize) {
@@ -29,6 +27,10 @@ public class GridBase {
                 mainGrid.getChildren().add(cell.getCell(x,y));
             }
         }
+    }
+
+    public int getNumberOfCells() {
+        return this.numberOfCells;
     }
 
     public Pane init(Color color) {

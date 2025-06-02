@@ -9,12 +9,15 @@ public enum RPS {
     SCISSOR("/se/linda/gamecenter/Pictures/SissorH.jpg", "Scissor");
 
     private String imagePath;
-    @Getter
     private String name;
 
     RPS(String path, String name) {
         this.imagePath = path;
         this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public String getImagePath(){

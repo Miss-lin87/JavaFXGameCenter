@@ -23,10 +23,10 @@ public class WordGuesser implements BaseGame {
     private Alerts alerts;
 
     public WordGuesser() {
-        letterBase = new LetterBase(new WordSelector().getWord());
-        mainGrid = letterBase.init();
-        scene = new Scene(mainGrid);
-        hiddenWord = letterBase.getWord();
+        this.letterBase = new LetterBase(new WordSelector().getWord());
+        this.mainGrid = letterBase.init();
+        this.scene = new Scene(mainGrid);
+        this.hiddenWord = letterBase.getWord();
         setAlert();
         setLogic();
     }

@@ -21,10 +21,10 @@ public class RobotGame implements BaseGame {
     private Alerts alerts;
 
     public RobotGame(int size) {
-        gridBase = new GridBase(size, 40);
-        mainGrid = gridBase.init(Color.GREEN);
-        scene = new Scene(mainGrid);
-        alerts = new Alerts("Congratulations", "You win", Alert.AlertType.NONE);
+        this.gridBase = new GridBase(size, 40);
+        this.mainGrid = gridBase.init(Color.GREEN);
+        this.scene = new Scene(mainGrid);
+        this.alerts = new Alerts("Congratulations", "You win", Alert.AlertType.NONE);
         spawnRobot(0,0);
         gameLogic();
     }

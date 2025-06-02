@@ -17,14 +17,6 @@ public class Robot {
         this.y = y;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
     public void move(Directions direction) {
         switch (direction) {
             case UP -> y--;
@@ -33,6 +25,14 @@ public class Robot {
             case RIGHT -> x++;
             default -> System.out.println("Error");
         }
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
     }
 
     public boolean checkBounds(Directions direction, GridBase grid) {

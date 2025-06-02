@@ -3,12 +3,13 @@ package se.linda.gamecenter.Componenets;
 import javafx.scene.text.Text;
 
 public class Letter extends Text {
-    private String letter;
+    private final String letter;
     private boolean hidden;
 
     public Letter(String letter) {
         this.letter = letter;
         this.hidden = false;
+        this.setText(letter);
     }
 
     public void flipHidden() {
@@ -20,8 +21,7 @@ public class Letter extends Text {
         }
     }
 
-    public Letter getLetter(int x, String letter) {
-        this.setText(this.letter);
+    public Letter getLetter(int x) {
         this.setDisable(true);
         this.setId(x + letter);
         this.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");

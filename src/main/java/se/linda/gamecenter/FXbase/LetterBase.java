@@ -9,12 +9,19 @@ import se.linda.gamecenter.Componenets.Letter;
 
 public class LetterBase {
     private final GridPane mainGrid;
-    @Getter
     private final TextField textField;
-    @Getter
     private final TextArea guessField;
-    @Getter
     private final String word;
+
+    public TextField getTextField() {
+        return this.textField;
+    }
+    public TextArea getGuessField() {
+        return this.guessField;
+    }
+    public String getWord() {
+        return this.word;
+    }
 
     public LetterBase(String word) {
         this.mainGrid = new GridPane();
@@ -37,7 +44,7 @@ public class LetterBase {
         int position = 0;
         for (String letter : tempWord) {
             Letter l = new Letter(letter);
-            mainGrid.add(l.getLetter(position,letter),position,0);
+            mainGrid.add(l.getLetter(position),position,0);
             position ++;
         }
     }
