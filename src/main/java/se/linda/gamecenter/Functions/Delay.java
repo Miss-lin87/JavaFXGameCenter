@@ -8,7 +8,7 @@ public class Delay {
     private ScheduledExecutorService excutor;
 
     public Delay(Runnable method, int seconds) {
-        excutor = Executors.newSingleThreadScheduledExecutor();
-        excutor.schedule(method, seconds, TimeUnit.SECONDS);
+        this.excutor = Executors.newSingleThreadScheduledExecutor();
+        this.excutor.schedule(method, seconds, TimeUnit.SECONDS);
     }
 }

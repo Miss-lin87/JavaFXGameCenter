@@ -12,8 +12,8 @@ public class AlertButton {
     private ButtonType yes;
 
     public AlertButton() {
-        no = new ButtonType("No");
-        yes = new ButtonType("Yes");
+        this.no = new ButtonType("No");
+        this.yes = new ButtonType("Yes");
     }
 
     public void addButtons(Alert alert, Stage oldStage, String game) {

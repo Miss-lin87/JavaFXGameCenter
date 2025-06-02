@@ -7,7 +7,7 @@ public class WordSelector {
     private final List<String> words;
 
     public WordSelector() {
-        words = List.of(
+        this.words = List.of(
                 "apple",
                 "banana",
                 "cherry",

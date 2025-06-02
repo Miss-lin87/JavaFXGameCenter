@@ -23,10 +23,10 @@ public class FlipGame implements BaseGame {
     private Alerts alerts;
 
     public FlipGame(int size) {
-        gridBase = new GridBase(size, 40);
-        mainGrid = gridBase.init(Color.GREEN);
-        scene = new Scene(mainGrid);
-        alerts = new Alerts("Congratulations!", "You fliped all the tiles", Alert.AlertType.NONE);
+        this.gridBase = new GridBase(size, 40);
+        this.mainGrid = gridBase.init(Color.GREEN);
+        this.scene = new Scene(mainGrid);
+        this.alerts = new Alerts("Congratulations!", "You fliped all the tiles", Alert.AlertType.NONE);
         gameLogic();
     }
 
