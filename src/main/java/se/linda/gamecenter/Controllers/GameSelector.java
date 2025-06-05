@@ -25,6 +25,7 @@ public class GameSelector {
                 "5" , () -> new RobotGame(10)
         ));
     }
+
      public BaseGame getGame(String slection) {
         if (gameSuppliers.containsKey(slection)) {
             return gameSuppliers.get(slection).get();

@@ -2,6 +2,7 @@ package se.linda.gamecenter.Games;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import se.linda.gamecenter.Componenets.Letter;

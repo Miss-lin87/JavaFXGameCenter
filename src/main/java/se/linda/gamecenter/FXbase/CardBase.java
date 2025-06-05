@@ -11,7 +11,6 @@ import java.util.Random;
 
 public class CardBase {
     private final Pane mainGrid;
-    @Getter
     private int numberOfCards;
     private int cardHight;
     private int cardWidth;
@@ -67,6 +66,10 @@ public class CardBase {
             x = (x < Math.sqrt(numberOfCards)) ? x + 1 : 0;
             y += (x == 0) ? 1 : 0;
         }
+    }
+
+    public int getNumberOfCards() {
+        return this.numberOfCards;
     }
 
     public Pane init(Color color) {

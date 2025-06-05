@@ -4,7 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import se.linda.gamecenter.FXComponenets.AlertButton;
 
-public class Alerts extends Alert{
+public class Alerts extends Alert {
     private String title;
     private AlertType type;
     private String message;
