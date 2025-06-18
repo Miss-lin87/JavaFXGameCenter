@@ -19,7 +19,7 @@ public class Memory implements BaseGame {
     private final Pane mainGrid;
     private final Scene scene;
     private final List<Card> cardList = new ArrayList<>();
-    private Alerts alerts;
+    private final Alerts alerts;
 
     public Memory(int cards) {
         this.cardBase = new CardBase(cards, "60x40");

@@ -6,9 +6,9 @@ import java.util.List;
 
 public class PicBase {
     private final GridPane mainGrid;
-    private List<?> picList;
-    private int picHight;
-    private int picWidth;
+    private final List<?> picList;
+    private final int picHight;
+    private final int picWidth;
 
 
     public PicBase(List<?> picList, int hight, int width) {

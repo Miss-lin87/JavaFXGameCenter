@@ -2,11 +2,9 @@ package se.linda.gamecenter.Games;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import se.linda.gamecenter.Componenets.Letter;
-import se.linda.gamecenter.Constructors.WordSelector;
 import se.linda.gamecenter.Enums.Games;
 import se.linda.gamecenter.FXbase.LetterBase;
 import se.linda.gamecenter.Functions.Alerts;
@@ -24,7 +22,7 @@ public class WordGuesser implements BaseGame {
     private Alerts alerts;
 
     public WordGuesser() {
-        this.letterBase = new LetterBase(new WordSelector().getWord());
+        this.letterBase = new LetterBase(getWord());
         this.mainGrid = letterBase.init();
         this.scene = new Scene(mainGrid);
         this.hiddenWord = letterBase.getWord();

@@ -8,9 +8,9 @@ import se.linda.gamecenter.Constants;
 import se.linda.gamecenter.Controllers.GameSelector;
 import se.linda.gamecenter.Functions.SceneLuncher;
 
-public class AlertButton {
-    private ButtonType no;
-    private ButtonType yes;
+public class AlertButton implements Constants {
+    private final ButtonType no;
+    private final ButtonType yes;
 
     public AlertButton() {
         this.no = new ButtonType("No");
@@ -26,7 +26,7 @@ public class AlertButton {
         Button tempYes = (Button) alert.getDialogPane().lookupButton(yes);
         tempYes.setOnAction(actionEvent -> {
             oldStage.close();
-            SceneLuncher mainApp = new SceneLuncher(new GameSelector(Constants.games).getGame(game));
+            SceneLuncher mainApp = new SceneLuncher(new GameSelector(games).getGame(game));
             Stage stage = new Stage();
             stage.setScene(mainApp.load());
             stage.show();

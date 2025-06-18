@@ -2,17 +2,17 @@ package se.linda.gamecenter.FXbase;
 
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import lombok.Getter;
 import se.linda.gamecenter.Componenets.Card;
-import se.linda.gamecenter.Constructors.ColorSelector;
+import se.linda.gamecenter.Constructors.Selectors;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CardBase {
+public class CardBase implements Selectors {
     private final Pane mainGrid;
     private int numberOfCards;
-    private int cardHight;
+    private int cardHeight;
     private int cardWidth;
     private final List<Card> allCards;
     private final Random random = new Random();
@@ -26,7 +26,7 @@ public class CardBase {
 
     private void parseCardSize(String cardSize) {
         String[] input = cardSize.strip().split("x");
-        cardHight = Integer.parseInt(input[0]);
+        cardHeight = Integer.parseInt(input[0]);
         cardWidth = Integer.parseInt(input[1]);
     }
 
@@ -42,9 +42,9 @@ public class CardBase {
 
     private void makeTotalCards(Color color) {
         for (int i = 0; i < numberOfCards/2; i++) {
-            Color tempColor = new ColorSelector(color).getColor();
-            Card card1 = new Card(cardHight, cardWidth, color, tempColor);
-            Card card2 = new Card(cardHight, cardWidth, color, tempColor);
+            Color tempColor = getColor();
+            Card card1 = new Card(cardHeight, cardWidth, color, tempColor);
+            Card card2 = new Card(cardHeight, cardWidth, color, tempColor);
             allCards.add(card1);
             allCards.add(card2);
         }
@@ -58,7 +58,7 @@ public class CardBase {
     }
 
     private void setGrid() {
-        mainGrid.setPrefSize(getPrefSize(cardWidth), getPrefSize(cardHight));
+        mainGrid.setPrefSize(getPrefSize(cardWidth), getPrefSize(cardHeight));
         int x = 0;
         int y = 0;
         while (!allCards.isEmpty()) {

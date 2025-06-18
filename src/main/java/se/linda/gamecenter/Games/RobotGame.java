@@ -18,13 +18,12 @@ public class RobotGame implements BaseGame {
     private final Scene scene;
     private final GridBase gridBase;
     private Robot robotControl;
-    private Alerts alerts;
 
     public RobotGame(int size) {
         this.gridBase = new GridBase(size, 40);
         this.mainGrid = gridBase.init(Color.GREEN);
         this.scene = new Scene(mainGrid);
-        this.alerts = new Alerts("Congratulations", "You win", Alert.AlertType.NONE);
+        Alerts alerts = new Alerts("Congratulations", "You win", Alert.AlertType.NONE);
         spawnRobot(0,0);
         gameLogic();
     }

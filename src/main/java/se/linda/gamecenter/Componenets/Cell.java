@@ -4,12 +4,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Cell extends Rectangle {
-    private boolean isOcupied;
+    private boolean isOccupied;
     private final int cellSize;
     private final Color color;
 
     public Cell (int cellSize, Color color) {
-        this.isOcupied = false;
+        this.isOccupied = false;
         this.cellSize = cellSize;
         this.setWidth(cellSize);
         this.setHeight(cellSize);
@@ -26,8 +26,8 @@ public class Cell extends Rectangle {
     }
 
     public void flipOccupied() {
-        this.isOcupied = !this.isOcupied;
-        if (isOcupied) {
+        this.isOccupied = !this.isOccupied;
+        if (isOccupied) {
             this.setFill(Color.RED);
         } else {
             this.setFill(color);

@@ -1,5 +1,6 @@
 package se.linda.gamecenter.Componenets;
 
+import lombok.Getter;
 import se.linda.gamecenter.Enums.Directions;
 import se.linda.gamecenter.FXbase.GridBase;
 
@@ -28,11 +29,10 @@ public class Robot {
     }
 
     public int getX() {
-        return this.x;
+        return x;
     }
-
     public int getY() {
-        return this.y;
+        return y;
     }
 
     public boolean checkBounds(Directions direction, GridBase grid) {

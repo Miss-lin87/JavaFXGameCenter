@@ -3,9 +3,10 @@ package se.linda.gamecenter.Games;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import se.linda.gamecenter.Constructors.Selectors;
 import se.linda.gamecenter.Functions.Alerts;
 
-public interface BaseGame {
+public interface BaseGame extends Selectors {
 
     Scene Start();
 
@@ -13,6 +14,4 @@ public interface BaseGame {
         alerts.showAlert((Stage) mainGrid.getScene().getWindow(), game);
     }
 
-    private void gameLogic() {
-    }
 }

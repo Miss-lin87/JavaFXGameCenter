@@ -8,8 +8,8 @@ public enum RPS {
     PAPER ("/se/linda/gamecenter/Pictures/PapperH.jpg", "Raper"),
     SCISSOR("/se/linda/gamecenter/Pictures/SissorH.jpg", "Scissor");
 
-    private String imagePath;
-    private String name;
+    private final String imagePath;
+    private final String name;
 
     RPS(String path, String name) {
         this.imagePath = path;

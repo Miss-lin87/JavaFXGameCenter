@@ -7,8 +7,8 @@ public enum Games {
     RPSGAME ("4", "Rock, Paper, Scissors"),
     ROBOT ("5", "Robot Game");
 
-    String game;
-    String name;
+    private final String game;
+    private final String name;
 
     Games(String game, String name) {
         this.game = game;

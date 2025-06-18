@@ -8,7 +8,7 @@ public enum Directions {
     LEFT (KeyCode.LEFT),
     RIGHT (KeyCode.RIGHT),;
 
-    private KeyCode key;
+    private final KeyCode key;
 
     Directions(KeyCode key) {
         this.key = key;

@@ -1,15 +1,11 @@
 package se.linda.gamecenter.Controllers;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import se.linda.gamecenter.Constants;
 import se.linda.gamecenter.Games.*;
 
-import java.io.InvalidObjectException;
 import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.locks.StampedLock;
 import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,13 +16,12 @@ public class GameSelectorTest {
             "1", () -> Mockito.mock(Memory.class),
             "2", () -> Mockito.mock(WordGuesser.class),
             "3", () -> Mockito.mock(FlipGame.class),
-            "4", () -> Mockito.mock(RockPapperGame.class),
+            "4", () -> Mockito.mock(RockPaperGame.class),
             "5", () -> Mockito.mock(RobotGame.class)
     );
 
     public GameSelectorTest() {
-        this.tempSelector = new GameSelector(Constants.games) {
-        };
+        this.tempSelector = new GameSelector(mockList);
     }
 
     @Test
@@ -54,8 +49,8 @@ public class GameSelectorTest {
                 () -> assertEquals(WordGuesser.class, mockSelector.getGame("2").getClass()),
                 () -> assertInstanceOf(FlipGame.class, mockSelector.getGame("3")),
                 () -> assertEquals(FlipGame.class, mockSelector.getGame("3").getClass()),
-                () -> assertInstanceOf(RockPapperGame.class, mockSelector.getGame("4")),
-                () -> assertEquals(RockPapperGame.class, mockSelector.getGame("4").getClass()),
+                () -> assertInstanceOf(RockPaperGame.class, mockSelector.getGame("4")),
+                () -> assertEquals(RockPaperGame.class, mockSelector.getGame("4").getClass()),
                 () -> assertInstanceOf(RobotGame.class, mockSelector.getGame("5")),
                 () -> assertEquals(RobotGame.class, mockSelector.getGame("5").getClass())
         );

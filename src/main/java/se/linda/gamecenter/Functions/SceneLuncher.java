@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import se.linda.gamecenter.Games.BaseGame;
 
 public class SceneLuncher {
-    private BaseGame game;
+    private final BaseGame game;
 
     public SceneLuncher(BaseGame game) {
         this.game = game;

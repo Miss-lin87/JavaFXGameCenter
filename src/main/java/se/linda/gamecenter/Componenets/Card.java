@@ -4,13 +4,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Card extends Rectangle {
-    private final int hight;
+    private final int height;
     private final int width;
     private final Color back;
     private final Color front;
 
     public Card(int height, int width, Color back, Color front) {
-        this.hight = height;
+        this.height = height;
         this.width = width;
         this.back = back;
         this.front = front;
@@ -21,7 +21,7 @@ public class Card extends Rectangle {
 
     public Card getCard(int x, int y) {
         setTranslateX(x * width);
-        setTranslateY(y * hight);
+        setTranslateY(y * height);
         this.setStroke(Color.WHITE);
         this.setStrokeWidth(5);
         this.setId(x + "" + y);

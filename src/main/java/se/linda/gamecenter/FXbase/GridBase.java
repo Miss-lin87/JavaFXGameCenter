@@ -6,7 +6,7 @@ import se.linda.gamecenter.Componenets.Cell;
 
 public class GridBase extends Pane {
     private final Pane mainGrid;
-    private int numberOfCells;
+    private final int numberOfCells;
     private final int cellSize;
 
     public GridBase(int numberOfCells, int cellSize) {

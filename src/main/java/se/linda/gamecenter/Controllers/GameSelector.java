@@ -1,24 +1,23 @@
 package se.linda.gamecenter.Controllers;
 
+import se.linda.gamecenter.Constants;
 import se.linda.gamecenter.Games.*;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
 public class GameSelector {
-    private Map<String, Supplier<BaseGame>> gameSuppliers = new HashMap<>();
+    private final Map<String, Supplier<BaseGame>> games;
 
-    public GameSelector(Map<String, Supplier<BaseGame>> gameList) {
-        this.gameSuppliers = gameList;
+    public GameSelector(Map<String, Supplier<BaseGame>> list) {
+        this.games = list;
     }
 
-     public BaseGame getGame(String slection) {
-        if (gameSuppliers.containsKey(slection)) {
-            return gameSuppliers.get(slection).get();
+     public BaseGame getGame(String selection) {
+        if (games.containsKey(selection)) {
+            return games.get(selection).get();
         } else {
-            throw new IllegalArgumentException("Invalid game selection: " + slection);
+            throw new IllegalArgumentException("Invalid game selection: " + selection);
         }
      }
 }

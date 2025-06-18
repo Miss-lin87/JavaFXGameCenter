@@ -7,9 +7,9 @@ import se.linda.gamecenter.Enums.Games;
 import se.linda.gamecenter.Functions.SceneLuncher;
 import java.util.Scanner;
 
-public class Main extends Application {
-    private GameSelector games = new GameSelector(Constants.games);
-    private Scanner scanner = new Scanner(System.in);
+public class Main extends Application implements Constants {
+    private final GameSelector gameSelector = new GameSelector(games);
+    private final Scanner scanner = new Scanner(System.in);
 
     private String getGameSelection() {
         StringBuilder build = new StringBuilder()
@@ -28,7 +28,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         String gameSelection = getGameSelection();
-        SceneLuncher mainApp = new SceneLuncher(games.getGame(gameSelection));
+        SceneLuncher mainApp = new SceneLuncher(gameSelector.getGame(gameSelection));
         stage.setScene(mainApp.load());
         stage.show();
     }

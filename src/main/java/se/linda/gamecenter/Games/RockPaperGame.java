@@ -12,11 +12,10 @@ import se.linda.gamecenter.Enums.RPS;
 import se.linda.gamecenter.FXbase.PicBase;
 import se.linda.gamecenter.Functions.Alerts;
 
-import java.io.IOException;
 import java.util.*;
 import static se.linda.gamecenter.Enums.RPS.*;
 
-public class RockPapperGame implements BaseGame {
+public class RockPaperGame implements BaseGame {
     private final PicBase picBase;
     private final GridPane mainGrid;
     private final Scene scene;
@@ -28,9 +27,9 @@ public class RockPapperGame implements BaseGame {
     private final Text stats = new Text("0 - 0");
     private int wins = 0;
     private int loses = 0;
-    private Alerts alets;
+    private Alerts alerts;
 
-    public RockPapperGame() {
+    public RockPaperGame() {
         makePicList();
         this.picBase = new PicBase(picList, 75, 75);
         this.mainGrid = picBase.init();
@@ -42,7 +41,7 @@ public class RockPapperGame implements BaseGame {
                 ROCK, Set.of(SCISSOR),
                 SCISSOR, Set.of(PAPER),
                 PAPER, Set.of(ROCK)));
-        this.alets = new Alerts("", "", Alert.AlertType.NONE);
+        this.alerts = new Alerts("", "", Alert.AlertType.NONE);
         gameLogic();
     }
 
@@ -61,7 +60,7 @@ public class RockPapperGame implements BaseGame {
         mainGrid.add(stats, mainGrid.getChildren().size(),0);
     }
 
-    private void uppdateStats() {
+    private void updateStats() {
         stats.setText(wins + " - " + loses);
     }
 
@@ -73,10 +72,10 @@ public class RockPapperGame implements BaseGame {
     }
 
     private void setFunction(Picture pic, RPS userRPS) {
-        pic.setOnMouseEntered(event -> {
+        pic.setOnMouseEntered(_ -> {
             scene.setCursor(Cursor.HAND);
         });
-        pic.setOnMouseClicked(select -> {
+        pic.setOnMouseClicked(_ -> {
             removeComputerOptions();
             scene.setCursor(Cursor.WAIT);
             RPS computerRPS = RPS.values()[random.nextInt(3)];
@@ -99,14 +98,14 @@ public class RockPapperGame implements BaseGame {
     }
 
     private void testWin(String message) {
-        uppdateStats();
+        updateStats();
         result.setText(message);
         if (wins+loses == 3 && wins > loses) {
-            alets = new Alerts("Congratulations","You win with a score of: " + wins + " Wins, " + loses + " Loses", Alert.AlertType.NONE);
-            reRun(alets, mainGrid, Games.RPSGAME.getGame());
+            alerts = new Alerts("Congratulations","You win with a score of: " + wins + " Wins, " + loses + " Loses", Alert.AlertType.NONE);
+            reRun(alerts, mainGrid, Games.RPSGAME.getGame());
         } else if (wins+loses == 3 && wins < loses) {
-            alets = new Alerts("Sorry", "You lose with a score of: " + wins + " Wins, " + loses + " Loses", Alert.AlertType.NONE);
-            reRun(alets, mainGrid, Games.RPSGAME.getGame());
+            alerts = new Alerts("Sorry", "You lose with a score of: " + wins + " Wins, " + loses + " Loses", Alert.AlertType.NONE);
+            reRun(alerts, mainGrid, Games.RPSGAME.getGame());
         }
     }
 

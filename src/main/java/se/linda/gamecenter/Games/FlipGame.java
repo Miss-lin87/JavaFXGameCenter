@@ -20,13 +20,13 @@ public class FlipGame implements BaseGame {
     private final Pane mainGrid;
     private final Scene scene;
     private final GridBase gridBase;
-    private Alerts alerts;
+    private final Alerts alerts;
 
     public FlipGame(int size) {
         this.gridBase = new GridBase(size, 40);
         this.mainGrid = gridBase.init(Color.GREEN);
         this.scene = new Scene(mainGrid);
-        this.alerts = new Alerts("Congratulations!", "You fliped all the tiles", Alert.AlertType.NONE);
+        this.alerts = new Alerts("Congratulations!", "You flipped all the tiles", Alert.AlertType.NONE);
         gameLogic();
     }
 
@@ -47,7 +47,7 @@ public class FlipGame implements BaseGame {
             flipAdjacentCells(makeCellList(tempX, tempY));
             checkVictory();
         });
-        cell.setOnMouseEntered(mouse -> scene.setCursor(Cursor.HAND));
+        cell.setOnMouseEntered(_ -> scene.setCursor(Cursor.HAND));
     }
 
     private Cell findCell(int x, int y) {
