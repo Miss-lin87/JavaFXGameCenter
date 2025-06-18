@@ -8,22 +8,10 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class GameSelector {
-    private final Map<String, Supplier<BaseGame>> gameSuppliers = new HashMap<>();
+    private Map<String, Supplier<BaseGame>> gameSuppliers = new HashMap<>();
 
-    public GameSelector() {
-        this.gameSuppliers.putAll(Map.of(
-                "1" , () -> new Memory(10),
-                "2" , () -> new WordGuesser(),
-                "3" , () -> new FlipGame(10),
-                "4" , () -> {
-                    try {
-                        return new RockPapperGame();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                },
-                "5" , () -> new RobotGame(10)
-        ));
+    public GameSelector(Map<String, Supplier<BaseGame>> gameList) {
+        this.gameSuppliers = gameList;
     }
 
      public BaseGame getGame(String slection) {

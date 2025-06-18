@@ -12,7 +12,8 @@ public class AlertButtonTest {
     public void testButton() {
         AlertButton temp = new AlertButton();
         assertAll(
-                () -> assertNotNull(temp)
+                () -> assertNotNull(temp),
+                () -> assertEquals(AlertButton.class,temp.getClass())
         );
     }
 }

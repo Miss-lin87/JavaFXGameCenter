@@ -8,7 +8,7 @@ import se.linda.gamecenter.Functions.SceneLuncher;
 import java.util.Scanner;
 
 public class Main extends Application {
-    private GameSelector games = new GameSelector();
+    private GameSelector games = new GameSelector(Constants.games);
     private Scanner scanner = new Scanner(System.in);
 
     private String getGameSelection() {

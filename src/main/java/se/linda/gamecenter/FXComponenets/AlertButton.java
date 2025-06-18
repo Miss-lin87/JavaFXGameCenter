@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import se.linda.gamecenter.Constants;
 import se.linda.gamecenter.Controllers.GameSelector;
 import se.linda.gamecenter.Functions.SceneLuncher;
 
@@ -25,7 +26,7 @@ public class AlertButton {
         Button tempYes = (Button) alert.getDialogPane().lookupButton(yes);
         tempYes.setOnAction(actionEvent -> {
             oldStage.close();
-            SceneLuncher mainApp = new SceneLuncher(new GameSelector().getGame(game));
+            SceneLuncher mainApp = new SceneLuncher(new GameSelector(Constants.games).getGame(game));
             Stage stage = new Stage();
             stage.setScene(mainApp.load());
             stage.show();

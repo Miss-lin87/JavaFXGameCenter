@@ -30,7 +30,7 @@ public class RockPapperGame implements BaseGame {
     private int loses = 0;
     private Alerts alets;
 
-    public RockPapperGame() throws IOException {
+    public RockPapperGame() {
         makePicList();
         this.picBase = new PicBase(picList, 75, 75);
         this.mainGrid = picBase.init();
